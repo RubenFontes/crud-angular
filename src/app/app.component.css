@@ -1,0 +1,20 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 10px;
+}
+
+ul li{
+    list-style-type: none;
+    color: white;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+}
