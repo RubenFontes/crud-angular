@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ClienteService } from '../services/cliente.service';
 import { Cliente } from '../cadastro/cliente';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-consulta',
@@ -15,6 +16,7 @@ export class ConsultaComponent implements OnInit {
 
   private service = inject(ClienteService);
   private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit() {
     this.arrClientes = this.service.getClients();
@@ -28,5 +30,6 @@ export class ConsultaComponent implements OnInit {
   deleteCliente(id: string){
     this.service.deletarCliente(id);
     this.arrClientes = this.service.getClients();
+    this.snackBar.open('Cliente deletado com sucesso!', 'Fechar')
   }
 }

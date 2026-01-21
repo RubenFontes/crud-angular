@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from '../services/cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CadastroComponent implements OnInit {
   cliente: Cliente = new Cliente().newCliente();
   updateMode: boolean = false;
+  private snackBar = inject(MatSnackBar);
 
   private service = inject(ClienteService);  //constructor(private service: ClienteService){}
   private route = inject(ActivatedRoute);
@@ -33,8 +35,10 @@ export class CadastroComponent implements OnInit {
     if (!this.updateMode) {
       this.service.postClient(this.cliente);
       this.cliente = new Cliente().newCliente();
+      this.snackBar.open('Cliente cadastrado com sucesso!', 'Fechar')
     } else {
       this.service.editClient(this.cliente);
+      this.snackBar.open('Cliente atualizado com sucesso!', 'Fechar')
     }
     this.router.navigate(['/consulta']);
   }

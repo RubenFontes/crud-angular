@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConsultaComponent } from './consulta/consulta.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,7 +37,8 @@ import { NgxMaskModule} from 'ngx-mask';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
