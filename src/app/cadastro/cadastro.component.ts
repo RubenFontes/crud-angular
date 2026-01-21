@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
-import { ClienteService } from '../cliente.service';
+import { ClienteService } from '../services/cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class CadastroComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
       if (id) {
-        const foundedClient = this.service.buscarCliente(id);
+        const foundedClient = this.service.searchClient(id);
         if (foundedClient) {
           this.cliente = foundedClient;
           this.updateMode = true;
@@ -31,11 +31,11 @@ export class CadastroComponent implements OnInit {
   
   salvar(){
     if (!this.updateMode) {
-      this.service.salvarCliente(this.cliente);
+      this.service.postClient(this.cliente);
       this.cliente = new Cliente().newCliente();
     } else {
-      this.service.editarCliente(this.cliente);
-      this.router.navigate(['/consulta']);
+      this.service.editClient(this.cliente);
     }
+    this.router.navigate(['/consulta']);
   }
 }
