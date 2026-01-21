@@ -1,8 +1,8 @@
-# CRUD Angular - Gerenciador de Clientes
+# Sistema de Cadastro
 
 ## Descrição
 
-Aplicação de CRUD para gerenciamento de clientes desenvolvida com Angular 15 e persistência em localStorage.
+Aplicação de CRUD para gerenciamento de cadastro desenvolvida com Angular 15 e persistência em localStorage.
 
 ## Instalação
 
