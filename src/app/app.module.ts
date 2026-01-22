@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { NgxMaskModule} from 'ngx-mask';
-
+import { provideHttpClient } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { NgxMaskModule} from 'ngx-mask';
     MatButtonModule,
     MatTableModule,
     NgxMaskModule.forRoot(),
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

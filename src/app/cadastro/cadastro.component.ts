@@ -3,6 +3,9 @@ import { Cliente } from './cliente';
 import { ClienteService } from '../services/cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UfApiService } from '../services/uf-api.service';
+import { EstadoApiResponse, MunicipioApiResponse } from '../uf-api.model';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,11 +15,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CadastroComponent implements OnInit {
   cliente: Cliente = new Cliente().newCliente();
   updateMode: boolean = false;
-  private snackBar = inject(MatSnackBar);
+  estados: EstadoApiResponse[] = [];
+  municipios: MunicipioApiResponse[] = [];
 
+  private snackBar = inject(MatSnackBar);
   private service = inject(ClienteService);  //constructor(private service: ClienteService){}
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private ufService = inject(UfApiService);
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -26,9 +32,13 @@ export class CadastroComponent implements OnInit {
         if (foundedClient) {
           this.cliente = foundedClient;
           this.updateMode = true;
+          if (this.cliente.uf) {
+            this.loadMunicipios({ value: this.cliente.uf } as MatSelectChange);
+          }
         }
       }
     });
+    this.loadUFs();
   }
   
   salvar(){
@@ -41,5 +51,28 @@ export class CadastroComponent implements OnInit {
       this.snackBar.open('Cliente atualizado com sucesso!', 'Fechar')
     }
     this.router.navigate(['/consulta']);
+  }
+
+loadUFs(): void {
+    this.ufService.getEstados().subscribe({
+      next: (data) => {
+        this.estados = data;
+        console.log('UFs carregadas:', this.estados);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar UFs', error);
+      }
+    });
+  }
+  loadMunicipios(event: MatSelectChange): void {
+    this.ufService.getMunicipios(event.value).subscribe({
+      next: (data) => {
+        this.municipios = data;
+        console.log('Municípios carregados:', this.municipios);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar municípios', error);
+      }
+    });
   }
 }
