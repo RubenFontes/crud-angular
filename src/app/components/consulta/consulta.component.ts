@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ClienteService } from '../services/cliente.service';
+import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../cadastro/cliente';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,7 +10,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./consulta.component.css']
 })
 export class ConsultaComponent implements OnInit {
-  nameSearch: string = '';
   arrClientes: Cliente[] = [];
   delete: boolean = false;
 
@@ -21,8 +20,8 @@ export class ConsultaComponent implements OnInit {
   ngOnInit() {
     this.arrClientes = this.service.getClients();
   }
-  search(){
-    this.arrClientes = this.service.getClients(this.nameSearch);
+  search(name: string){
+    this.arrClientes = this.service.getClients(name);
   }
   editCliente(id: string){
     this.router.navigate(['/cadastro'], { queryParams: { id: id } });

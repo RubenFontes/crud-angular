@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConsultaComponent } from './consulta/consulta.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { ConsultaComponent } from './components/consulta/consulta.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 const routes: Routes = [
   { path: 'consulta', component: ConsultaComponent }, 

@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
-import { ClienteService } from '../services/cliente.service';
+import { ClienteService } from '../../services/cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UfApiService } from '../services/uf-api.service';
-import { EstadoApiResponse, MunicipioApiResponse } from '../uf-api.model';
+import { UfApiService } from '../../services/uf-api.service';
+import { EstadoApiResponse, MunicipioApiResponse } from '../../uf-api.model';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({

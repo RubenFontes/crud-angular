@@ -1,0 +1,11 @@
+<div>
+    <div>
+        <app-search (searchComp)="search($event)"></app-search>
+    </div>
+</div>
+
+<div>
+    <div>
+        <app-table [dataSource]="arrClientes" (edit)="editCliente($event)" (delete)="deleteCliente($event)"></app-table>
+    </div>
+</div>

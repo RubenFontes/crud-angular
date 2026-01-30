@@ -1,4 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  background-color: whitesmoke;}
+
+/* Consult */
+
+form, .table-data{
+    margin: 30px;
+}
+
+mat-card{
+    padding: 10px;
+}
+
+mat-card-header{
+    margin-bottom: 20px;
+}
+
+mat-form-field{
+    width: 40%;
+    margin-bottom: 0px;
+}
+
+mat-card-actions{
+    margin: 10px;
+    margin-top: 0px;
+}
+
+/* Navbar */
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 10px;
+}
+
+ul li{
+    list-style-type: none;
+    color: white;
+}
+
+ul li a{
+    color: white;
+    text-decoration: none;
+}
